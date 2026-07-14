@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -203,13 +204,13 @@ public class Actions {
     }
 
     // Validación de mensajes
-    protected void assertMessage(String expectedText) {
+    protected void assertMessage(String element, String expectedText) {
         log.debug("Validando mensaje esperado: '{}'", expectedText);
         try {
             WebDriverWait localWait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
             WebElement mensaje = localWait.until(
                     ExpectedConditions.visibilityOfElementLocated(
-                            By.xpath("(//*[contains(text(),'" + expectedText + "')])[1]")
+                            By.xpath("(//" + element + "[contains(text(),'" + expectedText + "')])[1]")
                     )
             );
 
@@ -237,5 +238,34 @@ public class Actions {
                 new ByteArrayInputStream(screenshot),
                 ".png"
         );
+    }
+    protected void assertMessages(String element, String expectedText, int count) {
+        log.debug("Validando que el mensaje '{}' aparezca {} veces", expectedText, count);
+
+        try {
+            WebDriverWait localWait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+
+            // Buscar todos los elementos que coincidan
+            List<WebElement> mensajes = localWait.until(
+                    ExpectedConditions.visibilityOfAllElementsLocatedBy(
+                            By.xpath("//" + element + "[contains(text(),'" + expectedText + "')]")
+                    )
+            );
+
+            int actualCount = mensajes.size();
+
+            if (actualCount != count) {
+                log.error("Se esperaba que '{}' apareciera {} veces, pero se encontró {} veces",
+                        expectedText, count, actualCount);
+                throw new AssertionError("Se esperaba que '" + expectedText +
+                        "' apareciera " + count + " veces, pero se encontró " + actualCount);
+            }
+
+            log.info("Mensaje '{}' validado correctamente, aparece {} veces", expectedText, actualCount);
+
+        } catch (TimeoutException e) {
+            log.error("No se encontró el mensaje esperado: '{}'", expectedText);
+            throw new AssertionError("No se encontró el mensaje esperado: '" + expectedText + "'");
+        }
     }
 }
