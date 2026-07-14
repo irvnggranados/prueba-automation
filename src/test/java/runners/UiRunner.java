@@ -21,7 +21,7 @@ public class UiRunner extends Actions{
         setUpDriver();
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 1, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void LoginExistoso() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -31,7 +31,7 @@ public class UiRunner extends Actions{
         });
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 2, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void LoginFallido() {
         Allure.step("Inicio de sesión con credenciales incorrectas", ()->{
             log.info("Iniciando prueba: LoginFallido");
@@ -42,7 +42,7 @@ public class UiRunner extends Actions{
         });
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 3, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void addOneProduct() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -58,7 +58,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 4, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void addProducts() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -74,7 +74,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 5, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void checkOneProduct() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -95,7 +95,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 6, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void checkProducts() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -116,7 +116,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 7, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void removeOneProduct() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -141,7 +141,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 8, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void removeProducts() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -166,7 +166,7 @@ public class UiRunner extends Actions{
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 9, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void validateCheckoutForm() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");
@@ -196,7 +196,7 @@ public class UiRunner extends Actions{
         });
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 10, enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void fillCheckoutForm() {
         Allure.step("Inicio de sesión con credenciales correctas", ()->{
             String username = properties.getProperty("user");

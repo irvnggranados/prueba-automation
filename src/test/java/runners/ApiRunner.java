@@ -13,7 +13,7 @@ public class ApiRunner {
 
     ApiClient api = new ApiClient();
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 1,enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void getTodasLasRazas() {
 
         Allure.step("Consultar endpoint de razas");
@@ -25,7 +25,7 @@ public class ApiRunner {
     }
 
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 2 ,enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void bulldogExists(){
 
         Response response = ApiClient.getRazas();
@@ -38,7 +38,7 @@ public class ApiRunner {
 
     }
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 3 ,enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void validarMessage(){
 
         Response response = ApiClient.getRazas();
@@ -51,7 +51,7 @@ public class ApiRunner {
     }
 
 
-    @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
+    @Test(priority = 4 ,enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void timepoRespuesta(){
 
         Response response = ApiClient.getRazas();
