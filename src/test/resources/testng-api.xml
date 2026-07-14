@@ -9,7 +9,7 @@
     <test name="API">
 
         <classes>
-            <class name="runners.apiRunner"/>
+            <class name="runners.ApiRunner"/>
         </classes>
 
     </test>

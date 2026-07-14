@@ -4,16 +4,16 @@ import actions.Actions;
 import actions.AllureReportGenerator;
 import io.qameta.allure.Allure;
 import org.testng.annotations.*;
-import ui.loginPage;
+import ui.LoginPage;
 import lombok.extern.slf4j.Slf4j;
-import ui.productPage;
+import ui.ProductPage;
 import utils.RetryAnalyzer;
 
 @Slf4j
-public class uiRunner extends Actions{
+public class UiRunner extends Actions{
 
-    loginPage login = new loginPage();
-    productPage product = new productPage();
+    LoginPage login = new LoginPage();
+    ProductPage product = new ProductPage();
 
     @BeforeMethod
     public void setUp() {

@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 @Slf4j
-public class productPage extends Actions {
+public class ProductPage extends Actions {
 
     By BTN_addOneToCart = By.xpath("(//button[text() = 'Add to cart'])[1]");
     By BTN_cartProducts = By.xpath("//a[@class='shopping_cart_link']");

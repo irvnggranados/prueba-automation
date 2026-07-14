@@ -4,7 +4,7 @@ import actions.Actions;
 import org.openqa.selenium.By;
 
 
-public class loginPage extends Actions{
+public class LoginPage extends Actions{
 
     By INP_username = By.xpath("//input[ @data-test = 'username']");
     By INP_password = By.xpath("//input[ @data-test = 'password']");

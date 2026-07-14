@@ -2,7 +2,7 @@
 <suite name="Automation Suite" parallel="false">
     <test name="UI Tests">
         <classes>
-            <class name="runners.uiRunner"/>
+            <class name="runners.UiRunner"/>
         </classes>
     </test>
 </suite>

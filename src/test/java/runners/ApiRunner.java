@@ -1,7 +1,7 @@
 package runners;
 
 import actions.AllureReportGenerator;
-import api.apiClient;
+import api.ApiClient;
 import io.qameta.allure.Allure;
 import io.restassured.response.Response;
 import org.testng.Assert;
@@ -9,16 +9,16 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 import utils.RetryAnalyzer;
 
-public class apiRunner {
+public class ApiRunner {
 
-    apiClient api = new apiClient();
+    ApiClient api = new ApiClient();
 
     @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void getTodasLasRazas() {
 
         Allure.step("Consultar endpoint de razas");
 
-        Response response = apiClient.getRazas();
+        Response response = ApiClient.getRazas();
 
         Assert.assertEquals(response.statusCode(),200);
 
@@ -28,7 +28,7 @@ public class apiRunner {
     @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void bulldogExists(){
 
-        Response response = apiClient.getRazas();
+        Response response = ApiClient.getRazas();
 
         Assert.assertEquals(response.statusCode(),200);
 
@@ -41,7 +41,7 @@ public class apiRunner {
     @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void validarMessage(){
 
-        Response response = apiClient.getRazas();
+        Response response = ApiClient.getRazas();
 
         Assert.assertEquals(
                 response.jsonPath().getString("status"),
@@ -54,7 +54,7 @@ public class apiRunner {
     @Test(enabled = true, retryAnalyzer = RetryAnalyzer.class)
     public void timepoRespuesta(){
 
-        Response response = apiClient.getRazas();
+        Response response = ApiClient.getRazas();
 
         Assert.assertTrue(
                 response.time() < 2000

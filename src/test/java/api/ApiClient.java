@@ -4,7 +4,7 @@ import io.qameta.allure.Allure;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class apiClient {
+public class ApiClient {
 
     public static Response getRazas() {
 
