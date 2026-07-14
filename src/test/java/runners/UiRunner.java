@@ -234,6 +234,7 @@ public class UiRunner extends Actions{
 
     @AfterSuite
     public void generarReporte() {
+
         AllureReportGenerator.generaReport();
     }
 }

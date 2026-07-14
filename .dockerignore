@@ -1,0 +1,14 @@
+target
+reports
+.git
+.idea
+.vscode
+
+*.iml
+
+allure-results
+allure-report
+
+logs
+
+README.md

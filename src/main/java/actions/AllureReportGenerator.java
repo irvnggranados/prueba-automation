@@ -9,9 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Slf4j
-public class AllureReportGenerator {
+public class AllureReportGenerator extends Actions {
 
-    private static final String ALLURE_PATH = "C:\\allure-2.44.0\\bin\\allure.bat";
+    private static final String ALLURE_PATH = properties.getProperty("allure.path", "allure");
 
     public static void generaReport() {
 

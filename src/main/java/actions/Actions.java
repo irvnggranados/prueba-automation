@@ -46,6 +46,7 @@ public class Actions {
 
     // Driver
     public void setUpDriver() {
+
         String browser = properties.getProperty("browser", "chrome");
         boolean headless = Boolean.parseBoolean(properties.getProperty("headless", "false"));
         int explicitWait = Integer.parseInt(properties.getProperty("explicit.wait", "15"));
@@ -55,19 +56,8 @@ public class Actions {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
 
-            // Headless si aplica
-            if (headless) {
-                options.addArguments("--headless=new");
-                options.addArguments("--disable-gpu");
-                options.addArguments("--window-size=1920,1080");
-            }else if (maximize) {
-                options.addArguments("--start-maximized");
-            }
-
-            // Guest mode: evita el popup de Password Leak Detection
+            // Ajustes comunes
             options.addArguments("--guest");
-
-            // Ajustes anti-popup generales
             options.addArguments("--disable-notifications");
             options.addArguments("--disable-popup-blocking");
             options.addArguments("--disable-save-password-bubble");
@@ -77,14 +67,29 @@ public class Actions {
             options.addArguments("--no-first-run");
             options.addArguments("--no-default-browser-check");
 
-            // Preferencias básicas (aunque en Guest se ignoran la mayoría)
             Map<String, Object> prefs = new HashMap<>();
-            prefs.put("safebrowsing.enabled", true); // mantener descargas seguras
+            prefs.put("safebrowsing.enabled", true);
             prefs.put("credentials_enable_service", false);
             prefs.put("profile.password_manager_enabled", false);
             options.setExperimentalOption("prefs", prefs);
 
+            // Diferencia entre local y docker
+            if (headless) {
+                // Flags obligatorias en Docker/Linux
+                options.addArguments("--headless=new");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+            } else {
+                // En local abre ventana normal
+                if (maximize) {
+                    options.addArguments("--start-maximized");
+                }
+            }
+
             driver.set(new ChromeDriver(options));
+
         } else {
             throw new UnsupportedOperationException("Browser no soportado: " + browser);
         }
