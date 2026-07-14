@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Automation Suite" parallel="false">
+    <test name="UI Tests">
+        <classes>
+            <class name="runners.uiRunner"/>
+        </classes>
+    </test>
+</suite>
